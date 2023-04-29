@@ -9,12 +9,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   @override
   void initState() {
-initDynamicLinks(context);
+    initDynamicLinks(context);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,10 +38,8 @@ initDynamicLinks(context);
       Navigator.pushNamed(context, deepLink.path);
     }
     FirebaseDynamicLinks.instance.onLink.listen(
-          (pendingDynamicLinkData) {
-        // Set up the `onLink` event listener next as it may be received here
+      (pendingDynamicLinkData) {
         final Uri deepLink = pendingDynamicLinkData.link;
-        // Example of using the dynamic link to push the user to a different screen
         Navigator.pushNamed(context, deepLink.path);
       },
     );
